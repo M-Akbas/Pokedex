@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body onload="load()">
-    
-</body>
+  <head>
+    <link rel="icon" type="image/x-icon" href="img/pokeball_logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokédex</title>
+  </head>
+  <body onload="init()">
+    <header class="d-Flex">
+      <div class="logo-container">
+        <img class="logo" src="img/pokeball_logo.png" />
+        <h2 class="logo-font">Pokédex</h2>
+      </div>
+      <div>
+        <img class="buttons" src="img/moon.png">
+        <img class="buttons" src="img/sun.png">
+      </div>
+      <div>
+        <input class="input-field" type="text" placeholder="search...">
+      </div>
+    </header>
+    <div id="pokedex">
+      <h1 id="pokemonName">Name</h1>
+    </div>
+  </body>
 </html>
