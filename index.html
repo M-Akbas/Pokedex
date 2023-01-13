@@ -16,21 +16,32 @@
     <title>Pokédex</title>
   </head>
   <body onload="init()">
-    <header class="d-Flex">
+    <header>
       <div class="logo-container">
         <img class="logo" src="img/pokeball_logo.png" />
         <h2 class="logo-font">Pokédex</h2>
       </div>
       <div>
-        <img class="buttons" src="img/moon.png">
-        <img class="buttons" src="img/sun.png">
+        <img class="buttons" src="img/moon.png" />
+        <img class="buttons" src="img/sun.png" />
       </div>
       <div>
-        <input class="input-field" type="text" placeholder="search...">
+        <input class="input-field" type="text" placeholder="search..." />
       </div>
     </header>
-    <div id="pokedex">
-      <h1 id="pokemonName">Name</h1>
+    <div id="content">
+      <div class="poke-card">
+        <h2 class="card-name">Name</h2>
+        <div class="card-content">
+          <div class="background-color">
+            <img class="pokemon-img" src="img/bulbasaur.png" />
+          </div>
+          <div class="types">
+            <p class="type-card">grass</p>
+            <p class="type-poison">poison</p>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
