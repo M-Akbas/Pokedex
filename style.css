@@ -32,6 +32,12 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+.d-FlexSpace {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100px;
+}
 .logo-container {
   display: flex;
   justify-content: space-between;
@@ -113,8 +119,20 @@ header {
     justify-content: center;
     align-items: center;
     width: 45px;
-    border: 2px solid grey;
+    border: 2px solid rgb(77, 77, 77);
     border-radius: 10px;
     transform: none !important;
     background-color: rgb(125,202,87);
+    
+}
+.type-move{
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  border: 2px solid rgb(77, 77, 77);
+  border-radius: 10px;
+  transform: none !important;
+  background-color: rgb(202, 190, 87);
 }
