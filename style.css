@@ -35,8 +35,11 @@ header {
 .d-FlexSpace {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 100px;
+  width: inherit;
+  justify-content: flex-end;
+  margin-right: 50px;
+  font-size: 25px;
+  color: #ffffff85;
 }
 .logo-container {
   display: flex;
@@ -87,12 +90,16 @@ header {
   text-align: center;
   color: white;
   transform: none !important;
+  font-size: 25px;
+  margin-bottom: 8px;
+  margin-top: unset;
 }
 .card-content {
   display: flex;
   width: 250px;
   justify-content: space-around;
   transform: none !important;
+  margin-bottom: 12px;
 }
 .pokemon-img {
   height: 130px;
@@ -102,30 +109,29 @@ header {
   transform: none !important;
 }
 .background-color {
-  background-color: rgb(36,36,36);
+  background-color: rgb(36, 36, 36);
   padding: 10px;
   border-radius: 100%;
 }
-.types{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: none !important;
+.types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: none !important;
 }
-.type-card{
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    border: 2px solid rgb(77, 77, 77);
-    border-radius: 10px;
-    transform: none !important;
-    background-color: rgb(125,202,87);
-    
+.type-card {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  border: 2px solid rgb(77, 77, 77);
+  border-radius: 10px;
+  transform: none !important;
+  background-color: rgb(125, 202, 87);
 }
-.type-move{
+.type-move {
   padding: 5px;
   display: flex;
   justify-content: center;

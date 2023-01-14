@@ -31,7 +31,7 @@ function displayPokemon() {
     let content = document.getElementById("content");
     content.innerHTML += `
       <div class="poke-card">
-        
+      <div class="d-FlexSpace">#${i}</div>
         <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
         <div class="card-content">
           <div class="background-color">
