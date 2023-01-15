@@ -27,6 +27,10 @@ function getPokemonColor(pokemon) {
       color = "bg-dragon";
     } else if (pokemonType === "rock") {
       color = "bg-rock";
-    } 
+    } else if (pokemonType === "ghost") {
+        color = "bg-ghost";
+      } else if (pokemonType === "ice") {
+        color = "bg-ice";
+      } 
     return color;
   }
