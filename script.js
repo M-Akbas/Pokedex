@@ -9,7 +9,7 @@ function init() {
 
 
 async function loadPokemons() {
-  for (let i = 1; i < 153; i++) {
+  for (let i = 1; i < 20; i++) {
     // fetching 10 pokemons
     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     let response = await fetch(url);
@@ -40,7 +40,7 @@ function displayPokemon() {
     let color = getPokemonColor(pokemon);
     let content = document.getElementById("content");
     content.innerHTML += `
-      <div class="poke-card ${color}">
+      <div class="poke-card ${color} ">
       <div class="d-FlexSpace">#${i}</div>
         <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
         <div class="card-content ">
