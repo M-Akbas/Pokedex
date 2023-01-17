@@ -1,12 +1,10 @@
 let currentPokemon;
 let allPokemons = [];
-let color = '';
-
+let color = "";
 
 function init() {
   loadPokemons();
 }
-
 
 async function loadPokemons() {
   for (let i = 1; i < 20; i++) {
@@ -19,29 +17,27 @@ async function loadPokemons() {
   displayPokemon();
 }
 
-
 function getPokemonType(pokemon) {
   return pokemon["types"]["0"]["type"]["name"];
 }
 function getPokemonImage(pokemon) {
   return pokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
-function getPokemonName(pokemon){
+function getPokemonName(pokemon) {
   return pokemon["name"];
 }
-function getPokemonMove(pokemon){
+function getPokemonMove(pokemon) {
   return pokemon["moves"]["0"]["move"]["name"];
 }
-
 
 function displayPokemon() {
   for (let i = 0; i < allPokemons.length; i++) {
     const pokemon = allPokemons[i];
     let color = getPokemonColor(pokemon);
-    let content = document.getElementById("content"); 
+    let content = document.getElementById("content");
     content.innerHTML += `
       <div onclick="showPokemon(${i})" class="poke-card ${color}">
-      <div class="d-FlexSpace">#${i+1}</div>
+      <div class="d-FlexSpace">#${i + 1}</div>
         <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
         <div class="card-content ">
           <div class="background-color ">
@@ -56,10 +52,14 @@ function displayPokemon() {
   }
   getPokemonColor();
 }
-
-function showPokemon(i){
-  let pokedex = document.getElementById('overlay');
-  pokedex.innerHTML += `<div>Hallo</div>`;
-  console.log("lauft" , i)
+function showPokemon(i) {
+  let pokemon = allPokemons[i];
+  let color = getPokemonColor(pokemon);
+  let pokedex = document.getElementById("overlay");
+  pokedex.classList.add("overlay");
+  pokedex.innerHTML += `
+    <div class="pokedex-card ${color}">
+      <div>#${i + 1} ${getPokemonName(pokemon)}</div>
+    </div>
+  `;
 }
-
