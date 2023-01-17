@@ -29,6 +29,12 @@ function getPokemonName(pokemon) {
 function getPokemonMove(pokemon) {
   return pokemon["moves"]["0"]["move"]["name"];
 }
+function getPokemonHeight(pokemon){
+  return pokemon["height"] / 10 ;
+}
+function getPokemonWeight(pokemon){
+  return pokemon["weight"] / 10 ;
+}
 
 function displayPokemon() {
   for (let i = 0; i < allPokemons.length; i++) {
@@ -59,7 +65,13 @@ function showPokemon(i) {
   pokedex.classList.add("overlay");
   pokedex.innerHTML += `
     <div class="pokedex-card ${color}">
-      <div>#${i + 1} ${getPokemonName(pokemon)}</div>
+      <div class="d-FlexSpace">#${i + 1}</div>
+      <div class="card-name">${getPokemonName(pokemon)}</div>
+      <div class="type"><p class="type-cardP">${getPokemonType(pokemon)}</p><p class="type-moveP"> ${getPokemonMove(pokemon)}</p></div>
+      <div class="type"><p class="type-cardP">${getPokemonHeight(pokemon)} m</p><p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p></div>
+      <div class="d-FlexWidth">
+      <img class="arrowPng" src="img/arrowL.png"/><img class="arrowPng" src="img/arrowR.png"/>
+      <div>
     </div>
   `;
 }
