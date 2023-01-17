@@ -35,13 +35,13 @@ function getPokemonMove(pokemon){
 
 
 function displayPokemon() {
-  for (let i = 1; i < allPokemons.length; i++) {
+  for (let i = 0; i < allPokemons.length; i++) {
     const pokemon = allPokemons[i];
     let color = getPokemonColor(pokemon);
-    let content = document.getElementById("content");
+    let content = document.getElementById("content"); 
     content.innerHTML += `
-      <div class="poke-card ${color} ">
-      <div class="d-FlexSpace">#${i}</div>
+      <div onclick="showPokemon(${i})" class="poke-card ${color}">
+      <div class="d-FlexSpace">#${i+1}</div>
         <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
         <div class="card-content ">
           <div class="background-color ">
@@ -56,3 +56,10 @@ function displayPokemon() {
   }
   getPokemonColor();
 }
+
+function showPokemon(i){
+  let pokedex = document.getElementById('overlay');
+  pokedex.innerHTML += `<div>Hallo</div>`;
+  console.log("lauft" , i)
+}
+
