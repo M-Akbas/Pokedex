@@ -67,11 +67,15 @@ function showPokemon(i) {
     <div class="pokedex-card ${color}">
       <div class="d-FlexSpace">#${i + 1}</div>
       <div class="card-name">${getPokemonName(pokemon)}</div>
-      <div class="type"><p class="type-cardP">${getPokemonType(pokemon)}</p><p class="type-moveP"> ${getPokemonMove(pokemon)}</p></div>
-      <div class="type"><p class="type-cardP">${getPokemonHeight(pokemon)} m</p><p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p></div>
+      <div class="typeO"><p class="type-cardP">${getPokemonType(pokemon)}</p><p class="type-moveP"> ${getPokemonMove(pokemon)}</p></div>
+      <div class="typeU"><p class="type-cardP">${getPokemonHeight(pokemon)} m</p><p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p></div>
       <div class="d-FlexWidth">
       <img class="arrowPng" src="img/arrowL.png"/><img class="arrowPng" src="img/arrowR.png"/>
-      <div>
+      </div>
+      <div class="posAbs"><img class="pokemon-imgCard background-colorC" src="${getPokemonImage(pokemon)}" style='border: 4px solid ${color};'/></div>
+      <div class="pokeData">
+      hallo
+      </div>
     </div>
   `;
 }
