@@ -7,7 +7,7 @@ function init() {
 }
 
 async function loadPokemons() {
-  for (let i = 1; i < 20; i++) {
+  for (let i = 1; i < 1000; i++) {
     // fetching 10 pokemons
     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     let response = await fetch(url);
@@ -62,6 +62,8 @@ function showPokemon(i) {
   let pokemon = allPokemons[i];
   let color = getPokemonColor(pokemon);
   let pokedex = document.getElementById("overlay");
+  let textDeco = getPokemonTextColor(pokemon);
+  let borderColor = getBorderColor(pokemon);
   pokedex.classList.add("overlay");
   pokedex.innerHTML += `
     <div class="pokedex-card ${color}">
@@ -72,9 +74,11 @@ function showPokemon(i) {
       <div class="d-FlexWidth">
       <img class="arrowPng" src="img/arrowL.png"/><img class="arrowPng" src="img/arrowR.png"/>
       </div>
-      <div class="posAbs"><img class="pokemon-imgCard background-colorC" src="${getPokemonImage(pokemon)}" style='border: 4px solid ${color};'/></div>
+      <div class="posAbs"><img class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(pokemon)}"/></div>
       <div class="pokeData">
-      hallo
+       <div id="options" class="options ${textDeco}">
+        <p>STATS</p><p>MOVES</p>
+       </div>
       </div>
     </div>
   `;

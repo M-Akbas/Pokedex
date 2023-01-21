@@ -1,6 +1,7 @@
 /* BG COLORS FOR POKEMON CARDS */
 .bg-grass {
     background-color: rgb(130,188,147);
+    
   }
   
   .bg-fire {
@@ -64,3 +65,153 @@
   .bg-ghost{
     background-color: rgb(226, 226, 226);
   }
+  
+
+
+
+
+
+
+
+
+
+  .bg-grass-txt {
+    text-decoration-color: rgb(130,188,147);
+    
+  }
+  
+  .bg-fire-txt {
+    text-decoration-color: rgb(220,76,59);
+  }
+  
+  .bg-water-txt {
+    text-decoration-color: rgb(114, 176, 226);
+  }
+  
+  .bg-bug-txt {
+    text-decoration-color: rgb(137,201,120);
+  }
+  
+  .bg-normal-txt {
+    text-decoration-color: rgb(231, 229, 207);
+  }
+  
+  .bg-poison-txt {
+    text-decoration-color: rgb(149, 93, 192);
+  }
+  
+  .bg-electric-txt {
+    text-decoration-color: #FFCF4A;
+  }
+  
+  .bg-ground-txt {
+    text-decoration-color: rgb(163,128,81);
+  }
+  
+  .bg-fairy-txt {
+    text-decoration-color: rgb(238, 153, 172);
+  }
+  
+  .bg-fighting-txt {
+    text-decoration-color: rgb(192, 48, 40) ;
+  }
+  
+  .bg-psychic-txt {
+    text-decoration-color: rgb(248, 88, 136);
+  }
+  
+  .bg-rock-txt {
+    text-decoration-color:rgb(127,122,126);
+  }
+  
+  .bg-ghost-txt {
+    text-decoration-color: rgb(112, 88, 152) ;
+  }
+  
+  .bg-ice-txt {
+    text-decoration-color: rgb(159, 208, 208) ;
+  }
+  
+  .bg-dragon-txt {
+    text-decoration-color: rgb(112, 56, 248) ;
+  }
+  .bg-fighting-txt{
+    text-decoration-color: rgb(91, 43, 48);
+  }
+  .bg-ghost-txt{
+    text-decoration-color: rgb(226, 226, 226);
+  }
+
+
+
+
+
+  .bg-grass-border-color {
+    border:3px solid rgb(130,188,147);
+    
+  }
+  
+  .bg-fire-border-color {
+    border:3px solid rgb(220,76,59);
+  }
+  
+  .bg-water-border-color {
+    border:3px solid rgb(114, 176, 226);
+  }
+  
+  .bg-bug-border-color {
+    border:3px solid rgb(137,201,120);
+  }
+  
+  .bg-normal-border-color {
+    border:3px solid rgb(231, 229, 207);
+  }
+  
+  .bg-poison-border-color {
+    border:3px solid rgb(149, 93, 192);
+  }
+  
+  .bg-electric-border-color {
+    border:3px solid #FFCF4A;
+  }
+  
+  .bg-ground-border-color {
+    border:3px solid rgb(163,128,81);
+  }
+  
+  .bg-fairy-border-color {
+    border:3px solid rgb(238, 153, 172);
+  }
+  
+  .bg-fighting-border-color {
+    border:3px solid rgb(192, 48, 40) ;
+  }
+  
+  .bg-psychic-border-color {
+    border:3px solid rgb(248, 88, 136);
+  }
+  
+  .bg-rock-border-color {
+    border:3px solid rgb(127,122,126);
+  }
+  
+  .bg-ghost-border-color {
+    border:3px solid rgb(112, 88, 152) ;
+  }
+  
+  .bg-ice-border-color {
+    border:3px solid rgb(159, 208, 208) ;
+  }
+  
+  .bg-dragon-border-color {
+    border:3px solid rgb(112, 56, 248) ;
+  }
+  .bg-fighting-border-color{
+    border:3px solid rgb(91, 43, 48);
+  }
+  .bg-ghost-border-color{
+    border:3px solid rgb(226, 226, 226);
+  }
+
+
+
