@@ -33,6 +33,11 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+.d-Flex20{
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
 .d-FlexSpace {
   display: flex;
   align-items: center;
@@ -263,6 +268,14 @@ header {
   text-decoration: 3px underline rgba(221, 220, 220, 0.46);
   padding-bottom: 3px;
   cursor: pointer;
+}
+.abilites{
+  margin-left: 38px;
+  color: white;
+}
+.abil-head{
+  font-size: 20px;
+  text-decoration: 3px underline rgba(107, 107, 107, 0.793);
 }
 
 

@@ -78,7 +78,7 @@ function getPokemonTextColor(pokemon){
   if (pokemonType === "fire") {
     borderColor = "bg-fire-border-color";
   } else if (pokemonType === "water") {
-    textDeco = "bg-water-border-color";
+    borderColor = "bg-water-border-color";
   } else if (pokemonType === "bug") {
     borderColor = "bg-bug-border-color";
   } else if (pokemonType === "normal") {

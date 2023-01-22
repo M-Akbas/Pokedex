@@ -7,7 +7,7 @@ function init() {
 }
 
 async function loadPokemons() {
-  for (let i = 1; i < 1000; i++) {
+  for (let i = 1; i < 100; i++) {
     // fetching 10 pokemons
     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     let response = await fetch(url);
@@ -34,6 +34,14 @@ function getPokemonHeight(pokemon){
 }
 function getPokemonWeight(pokemon){
   return pokemon["weight"] / 10 ;
+}
+function getPokemonAbilities1(pokemon){
+  return pokemon['abilities']['0']['ability']['name'];
+
+}
+function getPokemonAbilities2(pokemon){
+  return pokemon['abilities']['1']['ability']['name'];
+
 }
 
 function displayPokemon() {
@@ -64,6 +72,8 @@ function showPokemon(i) {
   let pokedex = document.getElementById("overlay");
   let textDeco = getPokemonTextColor(pokemon);
   let borderColor = getBorderColor(pokemon);
+  let abilitie1 = getPokemonAbilities1(pokemon);
+  let abilitie2 = getPokemonAbilities2(pokemon);
   pokedex.classList.add("overlay");
   pokedex.innerHTML += `
     <div class="pokedex-card ${color}">
@@ -77,9 +87,17 @@ function showPokemon(i) {
       <div class="posAbs"><img class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(pokemon)}"/></div>
       <div class="pokeData">
        <div id="options" class="options ${textDeco}">
-        <p>STATS</p><p>MOVES</p>
+        <p>STATS</p><p onlick="showPokemonMoves()">MOVES</p>
+       </div>
+       <div class="abilites">
+        <div class="abil-head">Abilities:</div>
+        <div class="d-Flex20">
+          <div>${abilitie1}</div>,
+          <div>${abilitie2}</div>
+        </div>  
        </div>
       </div>
     </div>
+    
   `;
 }
