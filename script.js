@@ -18,8 +18,14 @@ async function loadPokemons() {
 }
 
 function getPokemonType(pokemon) {
-  return pokemon["types"]["0"]["type"]["name"];
+  if (pokemon && pokemon.hasOwnProperty("types")) {
+    return pokemon["types"]["0"]["type"]["name"];
+  } else {
+    return "unknown";
+  }
 }
+
+
 function getPokemonImage(pokemon) {
   return pokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
@@ -40,9 +46,13 @@ function getPokemonAbilities1(pokemon){
 
 }
 function getPokemonAbilities2(pokemon){
-  return pokemon['abilities']['1']['ability']['name'];
-
+  if(pokemon.hasOwnProperty('abilities') && pokemon.abilities.length > 1) {
+    return '| ' + pokemon['abilities'][1]['ability']['name'];
+  } else {
+    return "";
+  }
 }
+
 
 function displayPokemon() {
   for (let i = 0; i < allPokemons.length; i++) {
@@ -54,7 +64,7 @@ function displayPokemon() {
       <div class="d-FlexSpace">#${i + 1}</div>
         <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
         <div class="card-content ">
-          <div class="background-color ">
+          <div id="background-of-pokemon${i}" class="background-color ">
             <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
           </div>
           <div class="types">
@@ -87,17 +97,39 @@ function showPokemon(i) {
       <div class="posAbs"><img class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(pokemon)}"/></div>
       <div class="pokeData">
        <div id="options" class="options ${textDeco}">
-        <p>STATS</p><p onlick="showPokemonMoves()">MOVES</p>
+        <p onclick="showPokemonStats()">STATS</p><p onclick="showPokemonMoves()">MOVES</p>
        </div>
-       <div class="abilites">
+       <div id="stats-section" class="abilites">
         <div class="abil-head">Abilities:</div>
         <div class="d-Flex20">
-          <div>${abilitie1}</div>,
+          <div>${abilitie1}</div>
           <div>${abilitie2}</div>
-        </div>  
+        </div>
+        <div>
+          <canvas id="myChart"></canvas>
+        </div>
        </div>
       </div>
     </div>
     
   `;
 }
+function showPokemonMoves(){
+  document.getElementById('stats-section').classList.add('d-none');
+}
+function showPokemonStats(){
+  document.getElementById('stats-section').classList.remove('d-none');
+}
+
+function lightMode() {
+  document.getElementById('body').classList.add('whiteBackground');
+  document.getElementById('header').classList.add('whiteBackground');
+  document.getElementById('header-font').classList.add('light-mode');
+  document.getElementById('button1').classList.add('border-color');
+  bgColorForEachPoke();
+}
+
+function bgColorForEachPoke(){
+  for (let i = 0; i < allPokemons.length; i++) {
+    document.getElementById(`background-of-pokemon${i}`).classList.add('whiteBackground');
+}}

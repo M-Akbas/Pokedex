@@ -35,7 +35,7 @@ header {
 }
 .d-Flex20{
   display: flex;
-  gap: 8px;
+  gap: 4px;
   margin-top: 10px;
 }
 .d-FlexSpace {
@@ -60,11 +60,26 @@ header {
   height: 50px;
   width: 50px;
 }
-.buttons {
+.light-mode{
+  color: #1d1d1e;
+}
+.button1 {
   width: 20px;
   padding: 5px;
   border: 2px solid white;
   border-radius: 100%;
+  cursor: pointer;
+}
+.button2 {
+  width: 20px;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.border-color{
+  border-color: rgb(209, 196, 16);
+  filter: invert(100);
 }
 .input-field {
   position: relative;
@@ -277,5 +292,10 @@ header {
   font-size: 20px;
   text-decoration: 3px underline rgba(107, 107, 107, 0.793);
 }
-
+.d-none{
+  display: none;
+}
+.whiteBackground{
+  background-color: whitesmoke;
+}
 

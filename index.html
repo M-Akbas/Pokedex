@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="template.js"></script>
     <link rel="icon" type="image/x-icon" href="img/pokeball_logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -9,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
       rel="stylesheet"
     />
+    
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="color.css">
@@ -17,15 +19,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokédex</title>
   </head>
-  <body onload="init()">
-    <header>
+  <body id="body" onload="init()">
+    <header id="header">
       <div class="logo-container">
         <img class="logo" src="img/pokeball_logo.png" />
-        <h2 class="logo-font">Pokédex</h2>
+        <h2 id="header-font" class="logo-font">Pokédex</h2>
       </div>
       <div>
-        <img class="buttons" src="img/moon.png" />
-        <img class="buttons" src="img/sun.png" />
+        <img id="button2" onclick="darkMode()" class="button1" src="img/moon.png" />
+        <img id="button1" onclick="lightMode()"class="button2" src="img/sun.png" />
       </div>
       <div>
         <input class="input-field" type="text" placeholder="search..." />
