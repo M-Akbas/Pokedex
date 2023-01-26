@@ -4,6 +4,10 @@ body {
   background-color: rgba(23, 23, 23, 0.941);
   font-family: "Acme", sans-serif;
 }
+.lightColor{
+  color: #1d1d1e!important ;
+}
+
 #content {
   color: white;
   display: inline-flex;
@@ -27,6 +31,10 @@ header {
   position: sticky;
   top: 0px;
   z-index: 3;
+}
+.canvas{
+  height: 500px;
+  width: 500px;
 }
 .d-Flex {
   display: flex;
@@ -73,9 +81,10 @@ header {
 .button2 {
   width: 20px;
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid rgba(246, 224, 61, 0.177);
   border-radius: 100%;
   cursor: pointer;
+ 
 }
 .border-color{
   border-color: rgb(209, 196, 16);
