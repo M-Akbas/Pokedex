@@ -122,14 +122,21 @@ function showPokemon(i) {
           <div>${abilitie1}</div>
           <div>${abilitie2}</div>
         </div>
+        <div>
+        <canvas class="canvas" id="myChart"></canvas>
+        </div>
        </div>
       </div>
     </div>
     
     `;
     checkForColor();
+    getChart();
 }
+function getChart(){
+  chartJs();
 
+}
 function nextPokemon(i){
   i++;
   showPokemon(i);

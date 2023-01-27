@@ -86,6 +86,11 @@ header {
   cursor: pointer;
  
 }
+.canvas{
+  margin-top: 20px;
+  height: 160px !important;
+  width:300px !important;
+}
 .border-color{
   border-color: rgb(209, 196, 16);
   filter: invert(100);
