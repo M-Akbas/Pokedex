@@ -25,7 +25,6 @@ function getPokemonType(pokemon) {
   }
 }
 
-
 function getPokemonImage(pokemon) {
   return pokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
@@ -35,27 +34,26 @@ function getPokemonName(pokemon) {
 function getPokemonMove(pokemon) {
   return pokemon["moves"]["0"]["move"]["name"];
 }
-function getPokemonHeight(pokemon){
-  return pokemon["height"] / 10 ;
+function getPokemonHeight(pokemon) {
+  return pokemon["height"] / 10;
 }
-function getPokemonWeight(pokemon){
-  return pokemon["weight"] / 10 ;
+function getPokemonWeight(pokemon) {
+  return pokemon["weight"] / 10;
 }
-function getPokemonAbilities1(pokemon){
-  if(pokemon.hasOwnProperty('abilities') && pokemon.abilities.length > 1) {
-    return pokemon['abilities'][0]['ability']['name'];
+function getPokemonAbilities1(pokemon) {
+  if (pokemon.hasOwnProperty("abilities") && pokemon.abilities.length > 1) {
+    return pokemon["abilities"][0]["ability"]["name"];
   } else {
     return "";
   }
 }
-function getPokemonAbilities2(pokemon){
-  if(pokemon.hasOwnProperty('abilities') && pokemon.abilities.length > 1) {
-    return '| ' + pokemon['abilities'][1]['ability']['name'];
+function getPokemonAbilities2(pokemon) {
+  if (pokemon.hasOwnProperty("abilities") && pokemon.abilities.length > 1) {
+    return "| " + pokemon["abilities"][1]["ability"]["name"];
   } else {
     return "";
   }
 }
-
 
 function displayPokemon() {
   for (let i = 0; i < allPokemons.length; i++) {
@@ -105,11 +103,13 @@ function showPokemon(i) {
         <p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p>
       </div>
       <div class="d-FlexWidth">
-        <img onclick="lastPokemon(${i})" class="arrowPng" src="img/arrowL.png"/>
+        <img id="lastPokemon" onclick="lastPokemon(${i})" class="arrowPng" src="img/arrowL.png"/>
         <img onclick="nextPokemon(${i})" class="arrowPng" src="img/arrowR.png"/>
       </div>
       <div class="posAbs">
-        <img id="pokeImg" class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(pokemon)}"/>
+        <img id="pokeImg" class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(
+    pokemon
+  )}"/>
       </div>
       <div id="pokeData" class="pokeData">
        <div id="options" class="options ${textDeco}">
@@ -130,66 +130,147 @@ function showPokemon(i) {
     </div>
     
     `;
-    checkForColor();
-    getChart();
+  checkForColor();
+  getData(i);
+  getChart();
 }
-function getChart(){
-  chartJs();
 
+function getChart() {
+  chartJs();
 }
-function nextPokemon(i){
+function nextPokemon(i) {
+  deleteOldData();
   i++;
   showPokemon(i);
-
 }
-function lastPokemon(i){
+function lastPokemon(i) {
+  deleteOldData();
   i--;
-  if(i <= 0){
-    alert('That the first Pokemon, go further, to see next ones!')
-  } else{
+  if (i <= 0) {
+    showPokemon(i);
+    document.getElementById("lastPokemon").classList.add("d-none");
+  } else {
     showPokemon(i);
   }
 }
 
-function showPokemonMoves(){
-  document.getElementById('stats-section').classList.add('d-none');
+
+
+
+function showPokemonMoves() {
+  document.getElementById("stats-section").classList.add("d-none");
+  
+
 }
-function showPokemonStats(){
-  document.getElementById('stats-section').classList.remove('d-none');
+function showPokemonStats() {
+  document.getElementById("stats-section").classList.remove("d-none");
 }
 
+
+
+
 function lightMode() {
-  document.getElementById('body').classList.add('whiteBackground');
-  document.getElementById('header').classList.add('whiteBackground');
-  document.getElementById('header-font').classList.add('light-mode');
-  document.getElementById('button1').classList.add('border-color'); 
+  document.getElementById("body").classList.add("whiteBackground");
+  document.getElementById("header").classList.add("whiteBackground");
+  document.getElementById("header-font").classList.add("light-mode");
+  document.getElementById("button1").classList.add("border-color");
   bgColorForEachPoke();
 }
-function checkForColor(){
-  if(document.body.classList.contains("whiteBackground")){
-    document.getElementById('pokeData').classList.add('whiteBackground');
-    document.getElementById('pokeImg').classList.add('whiteBackground');
-    document.getElementById('options').classList.add('lightColor');
-    document.getElementById('stats-section').classList.add('lightColor');
-  } 
+function checkForColor(i) {
+  if (document.body.classList.contains("whiteBackground")) {
+    document.getElementById("pokeData").classList.add("whiteBackground");
+    document.getElementById("pokeImg").classList.add("whiteBackground");
+    document.getElementById("options").classList.add("lightColor");
+    document.getElementById("stats-section").classList.add("lightColor");
+  }
+  
 }
-function darkMode(){
-  if(document.body.classList.contains("whiteBackground")){
-  document.getElementById('body').classList.remove('whiteBackground');
-  document.getElementById('header').classList.remove('whiteBackground');
-  document.getElementById('header-font').classList.remove('light-mode');
-  document.getElementById('button1').classList.remove('border-color'); 
-  bgColorForEachPokeDark();
-}}
-function bgColorForEachPoke(){
+function darkMode() {
+  if (document.body.classList.contains("whiteBackground")) {
+    document.getElementById("body").classList.remove("whiteBackground");
+    document.getElementById("header").classList.remove("whiteBackground");
+    document.getElementById("header-font").classList.remove("light-mode");
+    document.getElementById("button1").classList.remove("border-color");
+    bgColorForEachPokeDark();
+  }
+}
+function bgColorForEachPoke() {
   for (let i = 0; i < allPokemons.length; i++) {
-    document.getElementById(`background-of-pokemon${i}`).classList.add('whiteBackground');
-  
-}}
-function bgColorForEachPokeDark(){
+    document.getElementById(`background-of-pokemon${i}`).classList.add("whiteBackground");
+  }
+}
+function bgColorForEachPokeDark() {
   for (let i = 0; i < allPokemons.length; i++) {
-    document.getElementById(`background-of-pokemon${i}`).classList.remove('whiteBackground');
-  
-}}
+    document.getElementById(`background-of-pokemon${i}`).classList.remove("whiteBackground");
+  }
+}
+
+function close() {
+  document.getElementById("overlay").classList.remove("overlay");
+}
+
+function reload() {
+  location.reload();
+}
+
+
+
+
+
+
+function filterNames() {
+  let search = document.getElementById("search").value;
+  search = search.toLowerCase();
+  console.log(search);
+
+  let content = document.getElementById("content");
+  content.innerHTML = "";
+
+  if (!search) {
+    // No search term, render all pokemons
+    for (let i = 0; i < allPokemons.length; i++) {
+      const pokemon = allPokemons[i];
+      let color = getPokemonColor(pokemon);
+      content.innerHTML += `
+        <div onclick="showPokemon(${i})" class="poke-card ${color}">
+          <div class="d-FlexSpace">#${i + 1}</div>
+          <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
+          <div class="card-content ">
+            <div id="background-of-pokemon${i}" class="background-color ">
+              <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
+            </div>
+            <div class="types">
+              <p class="type-card"> ${getPokemonType(pokemon)}</p>
+              <p class="type-move">${getPokemonMove(pokemon)}</p>
+            </div>
+          </div>
+        </div>`;
+    }
+    return;
+  }
+
+  // Search term present, filter based on it
+  for (let i = 0; i < allPokemons.length; i++) {
+    const pokemon = allPokemons[i];
+    let color = getPokemonColor(pokemon);
+
+    if (getPokemonName(pokemon).includes(search)) {
+      content.innerHTML += `
+        <div onclick="showPokemon(${i})" class="poke-card ${color}">
+          <div class="d-FlexSpace">#${i + 1}</div>
+          <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
+          <div class="card-content ">
+            <div id="background-of-pokemon${i}" class="background-color ">
+              <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
+            </div>
+            <div class="types">
+              <p class="type-card"> ${getPokemonType(pokemon)}</p>
+              <p class="type-move">${getPokemonMove(pokemon)}</p>
+            </div>
+          </div>
+        </div>`;
+    }
+  }
+}
 
 

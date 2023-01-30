@@ -17,11 +17,11 @@
     <title>Pokédex</title>
   </head>
   <body id="body" onload="init()">
-    <div id="overlay">
+    <div onclick="close()" id="overlay">
       
     </div>
     <header id="header">
-      <div class="logo-container">
+      <div onclick="reload()" class="logo-container">
         <img class="logo" src="img/pokeball_logo.png" />
         <h2 id="header-font" class="logo-font">Pokédex</h2>
       </div>
@@ -40,9 +40,10 @@
         />
       </div>
       <div>
-        <input class="input-field" type="text" placeholder="search..." />
+        <input id="search" class="input-field" type="text" placeholder="search..." onkeydown="filterNames()"/>
       </div>
     </header>
+    
     <div id="content"></div>
    
   </body>
