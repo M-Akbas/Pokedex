@@ -292,7 +292,7 @@ header {
 .options{
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 85%;
   color: white;
   margin-left: 40px;
   margin-top: unset;
@@ -313,5 +313,8 @@ header {
 }
 .whiteBackground{
   background-color: whitesmoke;
+}
+.evoImg{
+  height: 120px;
 }
 

@@ -24,10 +24,18 @@ function getPokemonType(pokemon) {
     return "unknown";
   }
 }
-
 function getPokemonImage(pokemon) {
   return pokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
+function getPokemonImage1(i) {
+  i++;
+  return allPokemons[i]["sprites"]["other"]["official-artwork"]["front_default"];
+}
+function getPokemonImage2(i) {
+  i+2;
+  return allPokemons[i]["sprites"]["other"]["official-artwork"]["front_default"];
+}
+
 function getPokemonName(pokemon) {
   return pokemon["name"];
 }
@@ -114,7 +122,15 @@ function showPokemon(i) {
       <div id="pokeData" class="pokeData">
        <div id="options" class="options ${textDeco}">
         <p onclick="showPokemonStats()">STATS</p>
-        <p onclick="showPokemonMoves()">MOVES</p>
+        <p onclick="showPokemonEvo()">EVOLUTION</p>
+       </div>
+       <div id="evo-section" style="display: none">
+        <div>
+         <img class="evoImg" src="${getPokemonImage(pokemon)}"/>
+         <img class="evoImg" src="${getPokemonImage1(i)}"/>
+         <img class="evoImg" src="${getPokemonImage2(i)}"/>
+        </div>
+
        </div>
        <div id="stats-section" class="abilites">
         <div class="abil-head">Abilities:</div>
@@ -157,13 +173,15 @@ function lastPokemon(i) {
 
 
 
-function showPokemonMoves() {
+function showPokemonEvo() {
   document.getElementById("stats-section").classList.add("d-none");
-  
+  document.getElementById("evo-section").style.display = "block";
+
 
 }
 function showPokemonStats() {
   document.getElementById("stats-section").classList.remove("d-none");
+  document.getElementById("evo-section").style.display = "none";
 }
 
 
