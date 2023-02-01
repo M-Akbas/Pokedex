@@ -292,7 +292,7 @@ header {
 .options{
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 80%;
   color: white;
   margin-left: 40px;
   margin-top: unset;
@@ -316,5 +316,32 @@ header {
 }
 .evoImg{
   height: 120px;
+}
+
+.movesStats{
+  color: #1d1d1e;
+  background-color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 3px;
+  height: 40px;
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.statsOfPoke{
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.poke-card:hover {
+  transform: rotate(-5deg);
+  border-bottom-right-radius: 100px;
+  transition: all 150ms ease-in-out;
 }
 

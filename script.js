@@ -122,14 +122,10 @@ function showPokemon(i) {
       <div id="pokeData" class="pokeData">
        <div id="options" class="options ${textDeco}">
         <p onclick="showPokemonStats()">STATS</p>
-        <p onclick="showPokemonEvo()">EVOLUTION</p>
+        <p onclick="showPokemonMoves(${i})">Moves</p>
        </div>
-       <div id="evo-section" style="display: none">
-        <div>
-         <img class="evoImg" src="${getPokemonImage(pokemon)}"/>
-         <img class="evoImg" src="${getPokemonImage1(i)}"/>
-         <img class="evoImg" src="${getPokemonImage2(i)}"/>
-        </div>
+       <div class="statsOfPoke" id="move-section" style="display: none">
+        
 
        </div>
        <div id="stats-section" class="abilites">
@@ -149,6 +145,14 @@ function showPokemon(i) {
   checkForColor();
   getData(i);
   getChart();
+}
+function stats(i){
+  for (let j = 0; j <= 60; j++) {
+    let pokemon = allPokemons[i];
+    let stat = pokemon['moves'][j].move.name;
+    let content = document.getElementById('move-section');
+    content.innerHTML += `<div class="movesStats">${stat}</div>`;
+  }
 }
 
 function getChart() {
@@ -173,15 +177,16 @@ function lastPokemon(i) {
 
 
 
-function showPokemonEvo() {
+function showPokemonMoves(i) {
   document.getElementById("stats-section").classList.add("d-none");
-  document.getElementById("evo-section").style.display = "block";
-
+  document.getElementById("move-section").style.display = "block";
+  stats(i);
+  
 
 }
 function showPokemonStats() {
   document.getElementById("stats-section").classList.remove("d-none");
-  document.getElementById("evo-section").style.display = "none";
+  document.getElementById("move-section").style.display = "none";
 }
 
 
