@@ -7,7 +7,7 @@ function init() {
 }
 
 async function loadPokemons() {
-  for (let i = 1; i < 100; i++) {
+  for (let i = 1; i < 60; i++) {
     // fetching 10 pokemons
     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     let response = await fetch(url);
@@ -85,6 +85,7 @@ function displayPokemon() {
   }
   getPokemonColor();
 }
+
 function showPokemon(i) {
   let pokemon = allPokemons[i];
   let color = getPokemonColor(pokemon);
@@ -93,6 +94,7 @@ function showPokemon(i) {
   let borderColor = getBorderColor(pokemon);
   let abilitie1 = getPokemonAbilities1(pokemon);
   let abilitie2 = getPokemonAbilities2(pokemon);
+  document.body.style.overflow = "hidden";
   pokedex.classList.add("overlay");
   pokedex.innerHTML = `
     <div class="pokedex-card ${color}">
@@ -124,10 +126,12 @@ function showPokemon(i) {
         <p onclick="showPokemonStats()">STATS</p>
         <p onclick="showPokemonMoves(${i})">Moves</p>
        </div>
+       
        <div class="statsOfPoke" id="move-section" style="display: none">
         
 
        </div>
+       
        <div id="stats-section" class="abilites">
         <div class="abil-head">Abilities:</div>
         <div class="d-Flex20">
@@ -146,14 +150,16 @@ function showPokemon(i) {
   getData(i);
   getChart();
 }
-function stats(i){
+function stats(i) {
   for (let j = 0; j <= 60; j++) {
     let pokemon = allPokemons[i];
-    let stat = pokemon['moves'][j].move.name;
+    if (!pokemon || !pokemon.moves || !pokemon.moves[j] || !pokemon.moves[j].move) continue;
+    let stat = pokemon.moves[j].move.name;
     let content = document.getElementById('move-section');
     content.innerHTML += `<div class="movesStats">${stat}</div>`;
   }
 }
+
 
 function getChart() {
   chartJs();
@@ -180,6 +186,7 @@ function lastPokemon(i) {
 function showPokemonMoves(i) {
   document.getElementById("stats-section").classList.add("d-none");
   document.getElementById("move-section").style.display = "block";
+  document.getElementById("move-section").classList.add("d-F");
   stats(i);
   
 
@@ -187,6 +194,7 @@ function showPokemonMoves(i) {
 function showPokemonStats() {
   document.getElementById("stats-section").classList.remove("d-none");
   document.getElementById("move-section").style.display = "none";
+  document.getElementById("move-section").classList.remove("d-F");
 }
 
 
@@ -235,6 +243,7 @@ function close() {
 function reload() {
   location.reload();
 }
+
 
 
 

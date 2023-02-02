@@ -3,6 +3,7 @@ body {
   scroll-behavior: smooth;
   background-color: rgba(23, 23, 23, 0.941);
   font-family: "Acme", sans-serif;
+  
 }
 .lightColor{
   color: #1d1d1e!important ;
@@ -242,6 +243,11 @@ header {
   height: 100vh;
   z-index: 2;
   background-color: #030303b4;
+  overflow: hidden;
+}
+
+#header{
+  z-index: 1;
 }
 .pokedex-card {
   background-color: aliceblue;
@@ -306,7 +312,8 @@ header {
 }
 .abil-head{
   font-size: 20px;
-  text-decoration: 3px underline rgba(107, 107, 107, 0.793);
+  text-decoration: 3px underline #C0C0C0;
+
 }
 .d-none{
   display: none;
@@ -320,11 +327,16 @@ header {
 
 .movesStats{
   color: #1d1d1e;
-  background-color: whitesmoke;
-  border: 2px solid black;
-  border-radius: 20px;
+  background: radial-gradient(circle, #f2f2f2, #fff);
+
+
+  
+  border: 1px solid #ccc; 
+  margin-left: 6px;
+  margin-top: 6px;
+  border-radius: 10px;
   padding: 3px;
-  height: 40px;
+  height: 30px;
   width: fit-content;
   text-align: center;
   display: flex;
@@ -332,16 +344,54 @@ header {
   align-items: center;
 }
 .statsOfPoke{
+  
   display: flex;
-  margin-left: 10px;
-  margin-right: 10px;
-  justify-content: center;
-  align-items: center;
- 
+  flex-wrap: wrap;
+  height: 220px;
+  width: 500px;
+  overflow: scroll;
 }
+
 .poke-card:hover {
   transform: rotate(-5deg);
   border-bottom-right-radius: 100px;
   transition: all 150ms ease-in-out;
 }
+.d-F{
+  display: flex !important;
+}
 
+.statsOfPoke::-webkit-scrollbar {
+ 
+  width: 10px;
+  
+}
+
+.statsOfPoke::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(247, 247, 247, 0.762);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width: 1463px) {
+  .posAbs{
+    left: 38%;
+  }
+}
+@media(max-width: 997px) {
+  .posAbs{
+    left: 35%;
+  }
+}
