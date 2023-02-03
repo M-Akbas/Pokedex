@@ -1,21 +1,63 @@
 let currentPokemon;
 let allPokemons = [];
 let color = "";
+let start = 30;
+let begin = 1;
+
 
 function init() {
   loadPokemons();
 }
 
+
 async function loadPokemons() {
-  for (let i = 1; i < 60; i++) {
-    // fetching 10 pokemons
+  for (let i = begin; i < start; i++) {
     let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
     let response = await fetch(url);
     let currentPokemon = await response.json();
     allPokemons.push(currentPokemon);
   }
-  displayPokemon();
+  displayPokemon(begin, start);
 }
+function displayPokemon(begin, start) {
+  for (let i = begin -1; i < start && i < allPokemons.length; i++) {
+    const pokemon = allPokemons[i];
+    let color = getPokemonColor(pokemon);
+    let content = document.getElementById("content");
+    content.innerHTML += displayPokemonHTML(pokemon, color, i);
+    
+  }
+  getPokemonColor();
+  checkMode();
+  
+}
+
+
+function checkMode(){
+  console.log("Checking mode...");
+  if (document.body.classList.contains("whiteBackground")){
+    bgColorForEachPoke();
+  } else{
+    bgColorForEachPokeDark();
+  }
+}
+
+
+function showMorePokemon() {
+  begin += 30;
+  start += 30;
+  if (start > 1054) {
+  return;
+  }
+  loadPokemons();
+  }
+
+
+window.addEventListener("scroll", function () {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    showMorePokemon();
+  }
+});
 
 function getPokemonType(pokemon) {
   if (pokemon && pokemon.hasOwnProperty("types")) {
@@ -24,37 +66,61 @@ function getPokemonType(pokemon) {
     return "unknown";
   }
 }
+
+
 function getPokemonImage(pokemon) {
   return pokemon["sprites"]["other"]["official-artwork"]["front_default"];
 }
+
+
 function getPokemonImage1(i) {
   i++;
-  return allPokemons[i]["sprites"]["other"]["official-artwork"]["front_default"];
-}
-function getPokemonImage2(i) {
-  i+2;
-  return allPokemons[i]["sprites"]["other"]["official-artwork"]["front_default"];
+  return allPokemons[i]["sprites"]["other"]["official-artwork"][
+    "front_default"
+  ];
 }
 
-function getPokemonName(pokemon) {
-  return pokemon["name"];
+
+function getPokemonImage2(i) {
+  i + 2;
+  return allPokemons[i]["sprites"]["other"]["official-artwork"][
+    "front_default"
+  ];
 }
+
+
+function getPokemonName(pokemon) {
+  if (pokemon.hasOwnProperty("name")) {
+  return pokemon["name"];
+  }
+  return "";
+  }
+
+
 function getPokemonMove(pokemon) {
   return pokemon["moves"]["0"]["move"]["name"];
 }
+
+
 function getPokemonHeight(pokemon) {
   return pokemon["height"] / 10;
 }
+
+
 function getPokemonWeight(pokemon) {
   return pokemon["weight"] / 10;
 }
+
+
 function getPokemonAbilities1(pokemon) {
-  if (pokemon.hasOwnProperty("abilities") && pokemon.abilities.length > 1) {
-    return pokemon["abilities"][0]["ability"]["name"];
-  } else {
-    return "";
+  if (!pokemon.abilities || !pokemon.abilities[0] || !pokemon.abilities[0].ability) {
+    return "Ability information not available";
   }
+  return pokemon.abilities[0].ability.name;
 }
+
+
+
 function getPokemonAbilities2(pokemon) {
   if (pokemon.hasOwnProperty("abilities") && pokemon.abilities.length > 1) {
     return "| " + pokemon["abilities"][1]["ability"]["name"];
@@ -63,28 +129,18 @@ function getPokemonAbilities2(pokemon) {
   }
 }
 
-function displayPokemon() {
-  for (let i = 0; i < allPokemons.length; i++) {
-    const pokemon = allPokemons[i];
-    let color = getPokemonColor(pokemon);
-    let content = document.getElementById("content");
-    content.innerHTML += `
-      <div onclick="showPokemon(${i})" class="poke-card ${color}">
-      <div class="d-FlexSpace">#${i + 1}</div>
-        <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
-        <div class="card-content ">
-          <div id="background-of-pokemon${i}" class="background-color ">
-            <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
-          </div>
-          <div class="types">
-            <p class="type-card"> ${getPokemonType(pokemon)}</p>
-            <p class="type-move">${getPokemonMove(pokemon)}</p>
-          </div>
-        </div>
-      </div>`;
-  }
-  getPokemonColor();
+
+function closePokemon() {
+  deleteOldData();
+  let pokedex = document.getElementById("overlay");
+  document.body.style.overflow = "auto";
+  pokedex.classList.remove("overlay");
+  pokedex.innerHTML = "";
 }
+
+
+
+
 
 function showPokemon(i) {
   let pokemon = allPokemons[i];
@@ -96,66 +152,26 @@ function showPokemon(i) {
   let abilitie2 = getPokemonAbilities2(pokemon);
   document.body.style.overflow = "hidden";
   pokedex.classList.add("overlay");
-  pokedex.innerHTML = `
-    <div class="pokedex-card ${color}">
-      <div class="d-FlexSpace">
-        #${i + 1}
-      </div>
-      <div class="card-name">
-        ${getPokemonName(pokemon)}
-      </div>
-      <div class="typeO">
-        <p class="type-cardP">${getPokemonType(pokemon)}</p>
-        <p class="type-moveP"> ${getPokemonMove(pokemon)}</p>
-      </div>
-      <div class="typeU">
-        <p class="type-cardP">${getPokemonHeight(pokemon)} m</p>
-        <p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p>
-      </div>
-      <div class="d-FlexWidth">
-        <img id="lastPokemon" onclick="lastPokemon(${i})" class="arrowPng" src="img/arrowL.png"/>
-        <img onclick="nextPokemon(${i})" class="arrowPng" src="img/arrowR.png"/>
-      </div>
-      <div class="posAbs">
-        <img id="pokeImg" class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(
-    pokemon
-  )}"/>
-      </div>
-      <div id="pokeData" class="pokeData">
-       <div id="options" class="options ${textDeco}">
-        <p onclick="showPokemonStats()">STATS</p>
-        <p onclick="showPokemonMoves(${i})">Moves</p>
-       </div>
-       
-       <div class="statsOfPoke" id="move-section" style="display: none">
-        
-
-       </div>
-       
-       <div id="stats-section" class="abilites">
-        <div class="abil-head">Abilities:</div>
-        <div class="d-Flex20">
-          <div>${abilitie1}</div>
-          <div>${abilitie2}</div>
-        </div>
-        <div>
-        <canvas class="canvas" id="myChart"></canvas>
-        </div>
-       </div>
-      </div>
-    </div>
-    
-    `;
+  pokedex.innerHTML = showPokemonHTML(color,textDeco,borderColor,abilitie1,abilitie2,pokemon,i);
   checkForColor();
   getData(i);
   getChart();
+  
 }
+
+
 function stats(i) {
   for (let j = 0; j <= 60; j++) {
     let pokemon = allPokemons[i];
-    if (!pokemon || !pokemon.moves || !pokemon.moves[j] || !pokemon.moves[j].move) continue;
+    if (
+      !pokemon ||
+      !pokemon.moves ||
+      !pokemon.moves[j] ||
+      !pokemon.moves[j].move
+    )
+      continue;
     let stat = pokemon.moves[j].move.name;
-    let content = document.getElementById('move-section');
+    let content = document.getElementById("move-section");
     content.innerHTML += `<div class="movesStats">${stat}</div>`;
   }
 }
@@ -164,11 +180,15 @@ function stats(i) {
 function getChart() {
   chartJs();
 }
+
+
 function nextPokemon(i) {
   deleteOldData();
   i++;
   showPokemon(i);
 }
+
+
 function lastPokemon(i) {
   deleteOldData();
   i--;
@@ -181,23 +201,19 @@ function lastPokemon(i) {
 }
 
 
-
-
 function showPokemonMoves(i) {
   document.getElementById("stats-section").classList.add("d-none");
   document.getElementById("move-section").style.display = "block";
   document.getElementById("move-section").classList.add("d-F");
   stats(i);
-  
-
 }
+
+
 function showPokemonStats() {
   document.getElementById("stats-section").classList.remove("d-none");
   document.getElementById("move-section").style.display = "none";
   document.getElementById("move-section").classList.remove("d-F");
 }
-
-
 
 
 function lightMode() {
@@ -207,6 +223,8 @@ function lightMode() {
   document.getElementById("button1").classList.add("border-color");
   bgColorForEachPoke();
 }
+
+
 function checkForColor(i) {
   if (document.body.classList.contains("whiteBackground")) {
     document.getElementById("pokeData").classList.add("whiteBackground");
@@ -214,8 +232,9 @@ function checkForColor(i) {
     document.getElementById("options").classList.add("lightColor");
     document.getElementById("stats-section").classList.add("lightColor");
   }
-  
 }
+
+
 function darkMode() {
   if (document.body.classList.contains("whiteBackground")) {
     document.getElementById("body").classList.remove("whiteBackground");
@@ -225,35 +244,40 @@ function darkMode() {
     bgColorForEachPokeDark();
   }
 }
+
+
+
 function bgColorForEachPoke() {
   for (let i = 0; i < allPokemons.length; i++) {
-    document.getElementById(`background-of-pokemon${i}`).classList.add("whiteBackground");
+    document
+      .getElementById(`background-of-pokemon${i}`)
+      .classList.add("whiteBackground");
   }
 }
+
+
 function bgColorForEachPokeDark() {
   for (let i = 0; i < allPokemons.length; i++) {
-    document.getElementById(`background-of-pokemon${i}`).classList.remove("whiteBackground");
+    document
+      .getElementById(`background-of-pokemon${i}`)
+      .classList.remove("whiteBackground");
   }
 }
+
 
 function close() {
   document.getElementById("overlay").classList.remove("overlay");
 }
+
 
 function reload() {
   location.reload();
 }
 
 
-
-
-
-
-
 function filterNames() {
   let search = document.getElementById("search").value;
   search = search.toLowerCase();
-  console.log(search);
 
   let content = document.getElementById("content");
   content.innerHTML = "";
@@ -263,46 +287,44 @@ function filterNames() {
     for (let i = 0; i < allPokemons.length; i++) {
       const pokemon = allPokemons[i];
       let color = getPokemonColor(pokemon);
-      content.innerHTML += `
-        <div onclick="showPokemon(${i})" class="poke-card ${color}">
-          <div class="d-FlexSpace">#${i + 1}</div>
-          <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
-          <div class="card-content ">
-            <div id="background-of-pokemon${i}" class="background-color ">
-              <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
-            </div>
-            <div class="types">
-              <p class="type-card"> ${getPokemonType(pokemon)}</p>
-              <p class="type-move">${getPokemonMove(pokemon)}</p>
-            </div>
-          </div>
-        </div>`;
+      content.innerHTML += filterNamesHTML(color, pokemon, i);
     }
     return;
   }
-
   // Search term present, filter based on it
   for (let i = 0; i < allPokemons.length; i++) {
     const pokemon = allPokemons[i];
     let color = getPokemonColor(pokemon);
 
     if (getPokemonName(pokemon).includes(search)) {
-      content.innerHTML += `
-        <div onclick="showPokemon(${i})" class="poke-card ${color}">
-          <div class="d-FlexSpace">#${i + 1}</div>
-          <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
-          <div class="card-content ">
-            <div id="background-of-pokemon${i}" class="background-color ">
-              <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
-            </div>
-            <div class="types">
-              <p class="type-card"> ${getPokemonType(pokemon)}</p>
-              <p class="type-move">${getPokemonMove(pokemon)}</p>
-            </div>
-          </div>
-        </div>`;
+      content.innerHTML += filterNamesHTML2(color, pokemon, i);
     }
   }
 }
+
+
+function toggleButtons() {
+  let buttons = document.querySelectorAll(".button1, .button2");
+  let search = document.getElementById("search");
+
+  search.addEventListener("focus", function () {
+    buttons.forEach((button) => {
+      button.style.display = "none";
+    });
+  });
+
+  search.addEventListener("blur", function () {
+    buttons.forEach((button) => {
+      button.style.display = "inline-block";
+    });
+  });
+}
+
+window.addEventListener("load", toggleButtons);
+
+
+
+ 
+
 
 

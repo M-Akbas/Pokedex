@@ -34,7 +34,9 @@ function getPokemonColor(pokemon) {
   }
   return color;
 }
-function getPokemonTextColor(pokemon){
+
+
+function getPokemonTextColor(pokemon) {
   let textDeco = "";
   let pokemonType = getPokemonType(pokemon);
   if (pokemonType === "fire") {
@@ -72,7 +74,7 @@ function getPokemonTextColor(pokemon){
 }
 
 
- function getBorderColor(pokemon){
+function getBorderColor(pokemon) {
   let borderColor = "";
   let pokemonType = getPokemonType(pokemon);
   if (pokemonType === "fire") {
@@ -107,4 +109,125 @@ function getPokemonTextColor(pokemon){
     borderColor = "bg-ice-border-color";
   }
   return borderColor;
+}
+
+
+function displayPokemonHTML(pokemon, color, i) {
+  return `
+  <div onclick="showPokemon(${i})" class="poke-card ${color}">
+  <div class="d-FlexSpace">#${i + 1}</div>
+    <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
+    <div class="card-content ">
+      <div id="background-of-pokemon${i}" class="background-color ">
+        <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
+      </div>
+      <div class="types">
+        <p class="type-card"> ${getPokemonType(pokemon)}</p>
+        <p class="type-move">${getPokemonMove(pokemon)}</p>
+      </div>
+    </div>
+  </div>`;
+  
+}
+
+
+function showPokemonHTML(
+  color,
+  textDeco,
+  borderColor,
+  abilitie1,
+  abilitie2,
+  pokemon,
+  i
+) {
+  return `
+  <div class="pokedex-card ${color}">
+    <div class="d-FlexSpaceShow">
+    <img onclick="closePokemon() "class="closeImg" src="img/close.png"/>  
+      #${i + 1}
+    </div>
+    <div>
+        
+    </div>
+    <div class="card-name">
+      ${getPokemonName(pokemon)}
+    </div>
+    <div class="typeO">
+      <p class="type-cardP">${getPokemonType(pokemon)}</p>
+      <p class="type-moveP"> ${getPokemonMove(pokemon)}</p>
+    </div>
+    <div class="typeU">
+      <p class="type-cardP">${getPokemonHeight(pokemon)} m</p>
+      <p class="type-moveP"> ${getPokemonWeight(pokemon)} kg</p>
+    </div>
+    <div class="d-FlexWidth">
+      <img id="lastPokemon" onclick="lastPokemon(${i})" class="arrowPng" src="img/arrowL.png"/>
+      <img onclick="nextPokemon(${i})" class="arrowPng" src="img/arrowR.png"/>
+    </div>
+    <div class="posAbs">
+      <img id="pokeImg" class="pokemon-imgCard background-colorC ${borderColor}" src="${getPokemonImage(
+    pokemon
+  )}"/>
+    </div>
+    <div id="pokeData" class="pokeData">
+     <div id="options" class="options ${textDeco}">
+      <p onclick="showPokemonStats()">STATS</p>
+      <p onclick="showPokemonMoves(${i})">Moves</p>
+     </div>
+     
+     <div class="statsOfPoke" id="move-section" style="display: none">
+      
+
+     </div>
+     
+     <div id="stats-section" class="abilites">
+      <div class="abil-head">Abilities:</div>
+      <div class="d-Flex20">
+        <div>${abilitie1}</div>
+        <div>${abilitie2}</div>
+      </div>
+      <div>
+      <canvas class="canvas" id="myChart"></canvas>
+      </div>
+     </div>
+    </div>
+  </div>
+  
+  `;
+}
+
+
+function filterNamesHTML(color, pokemon, i){
+  return `
+  <div onclick="showPokemon(${i})" class="poke-card ${color}">
+    <div class="d-FlexSpace">#${i + 1}</div>
+    <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
+    <div class="card-content ">
+      <div id="background-of-pokemon${i}" class="background-color ">
+        <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
+      </div>
+      <div class="types">
+        <p class="type-card"> ${getPokemonType(pokemon)}</p>
+        <p class="type-move">${getPokemonMove(pokemon)}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+
+function filterNamesHTML2(color, pokemon, i){
+  return `
+  <div onclick="showPokemon(${i})" class="poke-card ${color}">
+    <div class="d-FlexSpace">#${i + 1}</div>
+    <h2 class="card-name"> ${getPokemonName(pokemon)}</h2>
+    <div class="card-content ">
+      <div id="background-of-pokemon${i}" class="background-color ">
+        <img class="pokemon-img" src="${getPokemonImage(pokemon)}"/>
+      </div>
+      <div class="types">
+        <p class="type-card"> ${getPokemonType(pokemon)}</p>
+        <p class="type-move">${getPokemonMove(pokemon)}</p>
+      </div>
+    </div>
+  </div>`;
 }

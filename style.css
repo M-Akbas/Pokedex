@@ -3,10 +3,9 @@ body {
   scroll-behavior: smooth;
   background-color: rgba(23, 23, 23, 0.941);
   font-family: "Acme", sans-serif;
-  
 }
-.lightColor{
-  color: #1d1d1e!important ;
+.lightColor {
+  color: #1d1d1e !important ;
 }
 
 #content {
@@ -33,7 +32,7 @@ header {
   top: 0px;
   z-index: 3;
 }
-.canvas{
+.canvas {
   height: 500px;
   width: 500px;
 }
@@ -42,7 +41,7 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.d-Flex20{
+.d-Flex20 {
   display: flex;
   gap: 4px;
   margin-top: 10px;
@@ -55,6 +54,28 @@ header {
   margin-right: 50px;
   font-size: 25px;
   color: #ffffff85;
+}
+.d-FlexSpaceShow {
+  display: flex;
+  align-items: center;
+  width: 460px;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 25px;
+  color: #ffffff85;
+}
+.closeImg {
+  height: 32px;
+  background-color: #1d1d1e15;
+  border-radius: 50px;
+  cursor: pointer;
+  
+}
+.closeImg:hover{
+  background-color: #00eaffa0;
+  filter: invert();
+  
+  
 }
 .logo-container {
   display: flex;
@@ -71,7 +92,7 @@ header {
   width: 50px;
   cursor: pointer;
 }
-.light-mode{
+.light-mode {
   color: #1d1d1e;
 }
 .button1 {
@@ -87,14 +108,13 @@ header {
   border: 2px solid rgba(246, 224, 61, 0.177);
   border-radius: 100%;
   cursor: pointer;
- 
 }
-.canvas{
+.canvas {
   margin-top: 20px;
   height: 160px !important;
-  width:300px !important;
+  width: 300px !important;
 }
-.border-color{
+.border-color {
   border-color: rgb(209, 196, 16);
   filter: invert(100);
 }
@@ -129,7 +149,7 @@ header {
   color: white;
   transform: none !important;
   font-size: 25px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   margin-top: unset;
 }
 .card-content {
@@ -146,7 +166,7 @@ header {
   border-radius: 100%;
   transform: none !important;
 }
-.pokemon-imgCard{
+.pokemon-imgCard {
   height: 170px;
   width: 170px;
   object-fit: cover;
@@ -159,7 +179,6 @@ header {
   padding: 40px;
   border-radius: 100%;
   border: 3px solid;
-  
 }
 .background-color {
   background-color: rgb(29, 29, 29);
@@ -186,7 +205,7 @@ header {
   justify-content: space-between;
   width: 85%;
   color: whitesmoke;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .type-card {
   padding: 5px;
@@ -246,7 +265,7 @@ header {
   overflow: hidden;
 }
 
-#header{
+#header {
   z-index: 1;
 }
 .pokedex-card {
@@ -275,7 +294,7 @@ header {
   width: 80%;
   margin-bottom: 30px;
 }
-.pokeData{
+.pokeData {
   background-color: rgb(23, 23, 23);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -284,18 +303,17 @@ header {
   width: 100%;
   height: 50%;
   border-top: 2px solid rgba(0, 0, 0, 0.084);
-  
 }
-.posAbs{
+.posAbs {
   position: fixed;
-  left:43.5%;
+  left: 43.5%;
   top: 31%;
 }
-.arrowPng:hover{
+.arrowPng:hover {
   opacity: 0.5;
   cursor: pointer;
 }
-.options{
+.options {
   display: flex;
   justify-content: space-between;
   width: 80%;
@@ -306,32 +324,29 @@ header {
   padding-bottom: 3px;
   cursor: pointer;
 }
-.abilites{
+.abilites {
   margin-left: 38px;
   color: white;
 }
-.abil-head{
+.abil-head {
   font-size: 20px;
-  text-decoration: 3px underline #C0C0C0;
-
+  text-decoration: 3px underline #c0c0c0;
 }
-.d-none{
+.d-none {
   display: none;
 }
-.whiteBackground{
+.whiteBackground {
   background-color: whitesmoke;
 }
-.evoImg{
+.evoImg {
   height: 120px;
 }
 
-.movesStats{
+.movesStats {
   color: #1d1d1e;
   background: radial-gradient(circle, #f2f2f2, #fff);
 
-
-  
-  border: 1px solid #ccc; 
+  border: 1px solid #ccc;
   margin-left: 6px;
   margin-top: 6px;
   border-radius: 10px;
@@ -343,8 +358,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-.statsOfPoke{
-  
+.statsOfPoke {
   display: flex;
   flex-wrap: wrap;
   height: 220px;
@@ -357,41 +371,26 @@ header {
   border-bottom-right-radius: 100px;
   transition: all 150ms ease-in-out;
 }
-.d-F{
+.d-F {
   display: flex !important;
 }
 
 .statsOfPoke::-webkit-scrollbar {
- 
   width: 10px;
-  
 }
 
 .statsOfPoke::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: rgba(247, 247, 247, 0.762);
+  background-color: rgba(128, 128, 128, 0.762);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width: 1463px) {
-  .posAbs{
+@media (max-width: 1463px) {
+  .posAbs {
     left: 38%;
   }
 }
-@media(max-width: 997px) {
-  .posAbs{
+@media (max-width: 997px) {
+  .posAbs {
     left: 35%;
   }
 }
