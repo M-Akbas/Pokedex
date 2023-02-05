@@ -128,7 +128,9 @@ function displayPokemonHTML(pokemon, color, i) {
     </div>
   </div>`;
   
+  
 }
+
 
 
 function showPokemonHTML(

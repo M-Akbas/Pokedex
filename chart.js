@@ -11,7 +11,6 @@ let xValues = [
   "Special-Attack",
   "Special-Defense",
   "Speed",
-  
 ];
 const yValues = [
   hpData,
@@ -26,7 +25,7 @@ function chartJs() {
   const ctx = document.getElementById("myChart");
 
   new Chart(ctx, {
-    type: 'bar',
+    type: "bar",
     data: dataStats,
     options: optionsOfStats,
   });
@@ -54,9 +53,16 @@ let optionsOfStats = {
       color: "rgb(239, 239, 239)",
     },
   },
+  interaction: true,
+  hover: {
+    mode: false,
+  },
 };
 
+
+
 let dataStats = {
+
   labels: xValues,
   datasets: [
     {

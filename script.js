@@ -25,10 +25,11 @@ function displayPokemon(begin, start) {
     let color = getPokemonColor(pokemon);
     let content = document.getElementById("content");
     content.innerHTML += displayPokemonHTML(pokemon, color, i);
+    checkMode();
     
   }
+  
   getPokemonColor();
-  checkMode();
   
 }
 
@@ -41,6 +42,7 @@ function checkMode(){
     bgColorForEachPokeDark();
   }
 }
+
 
 
 function showMorePokemon() {
@@ -136,6 +138,7 @@ function closePokemon() {
   document.body.style.overflow = "auto";
   pokedex.classList.remove("overlay");
   pokedex.innerHTML = "";
+  statsRendered = false;
 }
 
 
@@ -160,7 +163,13 @@ function showPokemon(i) {
 }
 
 
+let statsRendered = false;
+
 function stats(i) {
+  if (statsRendered) {
+    return;
+  }
+
   for (let j = 0; j <= 60; j++) {
     let pokemon = allPokemons[i];
     if (
@@ -174,7 +183,10 @@ function stats(i) {
     let content = document.getElementById("move-section");
     content.innerHTML += `<div class="movesStats">${stat}</div>`;
   }
+  
+  statsRendered = true;
 }
+
 
 
 function getChart() {
@@ -186,6 +198,7 @@ function nextPokemon(i) {
   deleteOldData();
   i++;
   showPokemon(i);
+  statsRendered = false;
 }
 
 
@@ -198,6 +211,7 @@ function lastPokemon(i) {
   } else {
     showPokemon(i);
   }
+  statsRendered = false;
 }
 
 
@@ -247,22 +261,34 @@ function darkMode() {
 
 
 
+
+// Check if the element exists before modifying its classList
+// add white color
 function bgColorForEachPoke() {
-  for (let i = 0; i < allPokemons.length; i++) {
-    document
-      .getElementById(`background-of-pokemon${i}`)
-      .classList.add("whiteBackground");
+  if (allPokemons && allPokemons.length > 0) {
+    for (let i = 0; i < allPokemons.length; i++) {
+      let element = document.getElementById(`background-of-pokemon${i}`);
+      if (element) {
+        element.classList.add("whiteBackground");
+      }
+    }
   }
 }
 
 
+// Check if the element exists before modifying its classList
+// add dark color
 function bgColorForEachPokeDark() {
-  for (let i = 0; i < allPokemons.length; i++) {
-    document
-      .getElementById(`background-of-pokemon${i}`)
-      .classList.remove("whiteBackground");
+  if (allPokemons && allPokemons.length > 0) {
+    for (let i = 0; i < allPokemons.length; i++) {
+      let element = document.getElementById(`background-of-pokemon${i}`);
+      if (element) {
+        element.classList.remove("whiteBackground");
+      }
+    }
   }
 }
+
 
 
 function close() {
@@ -281,13 +307,14 @@ function filterNames() {
 
   let content = document.getElementById("content");
   content.innerHTML = "";
-
+  
   if (!search) {
     // No search term, render all pokemons
     for (let i = 0; i < allPokemons.length; i++) {
       const pokemon = allPokemons[i];
       let color = getPokemonColor(pokemon);
       content.innerHTML += filterNamesHTML(color, pokemon, i);
+      checkMode();
     }
     return;
   }
@@ -298,6 +325,7 @@ function filterNames() {
 
     if (getPokemonName(pokemon).includes(search)) {
       content.innerHTML += filterNamesHTML2(color, pokemon, i);
+      checkMode();
     }
   }
 }
