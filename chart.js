@@ -21,6 +21,7 @@ const yValues = [
   speedData,
 ];
 
+
 function chartJs() {
   const ctx = document.getElementById("myChart");
 
@@ -83,6 +84,8 @@ let dataStats = {
     },
   ],
 };
+
+
 function getData(i) {
   let pokemon = allPokemons[i];
   let hp = pokemon["stats"][0]["base_stat"];
@@ -99,6 +102,7 @@ function getData(i) {
   specialDefenseData.push(specialDefense);
   speedData.push(speed);
 }
+
 
 function deleteOldData() {
   hpData.splice(0, hpData.length);

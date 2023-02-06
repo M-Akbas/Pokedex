@@ -69,13 +69,10 @@ header {
   background-color: #1d1d1e15;
   border-radius: 50px;
   cursor: pointer;
-  
 }
-.closeImg:hover{
+.closeImg:hover {
   background-color: #00eaffa0;
   filter: invert();
-  
-  
 }
 .logo-container {
   display: flex;
@@ -393,4 +390,131 @@ header {
   .posAbs {
     left: 35%;
   }
+}
+@media (max-width: 715px) {
+  .posAbs {
+    left: 32%;
+  }
+}
+@media (max-width: 551px) {
+  .posAbs {
+    left: 26%;
+  }
+}
+@media (max-width: 500px) {
+  .pokedex-card {
+    height: 100%;
+  }
+  .pokeData {
+    height: 54%;
+    margin-top: 49px;
+  }
+  .posAbs {
+    top: 24%;
+    left: 24%;
+  }
+  .d-FlexWidth {
+    width: 88%;
+    margin-top: 45px;
+  }
+  .statsOfPoke {
+    height: 375px;
+    font-size: 14px;
+    margin-left: 12px;
+    width: fit-content;
+  }
+  .pokedex-card {
+    border-radius: unset;
+  }
+  .pokeData {
+    border-bottom-right-radius: unset;
+    border-bottom-left-radius: unset;
+  }
+  .canvas {
+    margin-top: 60px;
+    height: 225px !important;
+    width: 422px !important;
+  }
+  .pokemon-imgCard {
+    height: 180px;
+    width: 180px;
+  }
+  .d-FlexSpaceShow {
+    margin-top: 15px;
+    margin-bottom: 35px;
+  }
+}
+@media (max-width: 476px) {
+  .d-FlexSpaceShow{
+    width: 355px;
+
+  }
+  .typeO{
+    width: 50%;
+
+  }
+  .typeU{
+    width: 70%;
+  }
+  .pokemon-imgCard{
+    height: 150px;
+    width: 150px;
+  }
+  .posAbs{
+    top: 26%;
+    left: 26%;
+  }
+  .arrowPng{
+    height: 45px;
+    width: 45px;
+  }
+  .canvas{
+    height: 200px !important;
+    width: 375px !important;
+  }
+}
+@media (max-width: 420px) {
+  .pokeData{
+    margin-top: 50px;
+  }
+  .d-FlexWidth{
+    margin-top: 70px;
+  }
+  .posAbs{
+    top: 28%;
+    left: 23%;
+  }
+  .canvas{
+    height: 175px !important;
+    width: 301px !important;
+  }
+}
+@media (max-width: 420px){
+  .overlay{
+    height: 103vh;
+  }
+}
+@media(max-width:390px) {
+  .statsOfPoke{
+    height: 350px !important;
+  }
+}
+@media (max-width: 375px){
+  .overlay{
+    height: 100%;
+  }
+  .canvas{
+    height: 144px !important;
+    width: 280px !important;
+    margin: unset;
+  }
+  .d-FlexSpaceShow{
+    margin-top: 17px;
+    margin-bottom: 0px;
+  }
+  .posAbs{
+    top: 30%;
+    left: 22%;
+  }
+  
 }

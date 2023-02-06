@@ -3,7 +3,7 @@ let allPokemons = [];
 let color = "";
 let start = 30;
 let begin = 1;
-
+let statsRendered = false;
 
 function init() {
   loadPokemons();
@@ -19,6 +19,8 @@ async function loadPokemons() {
   }
   displayPokemon(begin, start);
 }
+
+
 function displayPokemon(begin, start) {
   for (let i = begin -1; i < start && i < allPokemons.length; i++) {
     const pokemon = allPokemons[i];
@@ -42,7 +44,6 @@ function checkMode(){
     bgColorForEachPokeDark();
   }
 }
-
 
 
 function showMorePokemon() {
@@ -122,7 +123,6 @@ function getPokemonAbilities1(pokemon) {
 }
 
 
-
 function getPokemonAbilities2(pokemon) {
   if (pokemon.hasOwnProperty("abilities") && pokemon.abilities.length > 1) {
     return "| " + pokemon["abilities"][1]["ability"]["name"];
@@ -142,9 +142,6 @@ function closePokemon() {
 }
 
 
-
-
-
 function showPokemon(i) {
   let pokemon = allPokemons[i];
   let color = getPokemonColor(pokemon);
@@ -162,8 +159,6 @@ function showPokemon(i) {
   
 }
 
-
-let statsRendered = false;
 
 function stats(i) {
   if (statsRendered) {
@@ -188,7 +183,6 @@ function stats(i) {
 }
 
 
-
 function getChart() {
   chartJs();
 }
@@ -196,13 +190,20 @@ function getChart() {
 
 function nextPokemon(i) {
   deleteOldData();
+  if (i + 1 >= allPokemons.length) {
+    showMorePokemon();
+    alert("weitere Pokemons werden geladen!")
+    return;
+  }
   i++;
   showPokemon(i);
   statsRendered = false;
 }
 
 
+
 function lastPokemon(i) {
+  
   deleteOldData();
   i--;
   if (i <= 0) {
@@ -260,8 +261,6 @@ function darkMode() {
 }
 
 
-
-
 // Check if the element exists before modifying its classList
 // add white color
 function bgColorForEachPoke() {
@@ -288,7 +287,6 @@ function bgColorForEachPokeDark() {
     }
   }
 }
-
 
 
 function close() {
